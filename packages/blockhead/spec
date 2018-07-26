@@ -1,0 +1,14 @@
+---
+name: blockhead
+
+dependencies:
+- golang-1-linux
+
+files:
+  - github.com/jberkhahn/blockhead/cmd/broker/*.go # gosub
+  - github.com/jberkhahn/blockhead/pkg/broker/*.go # gosub
+  - github.com/jberkhahn/blockhead/pkg/config/*.go # gosub
+  - github.com/jberkhahn/blockhead/vendor/code.cloudfoundry.org/lager/*.go # gosub
+  - github.com/jberkhahn/blockhead/vendor/github.com/gorilla/mux/*.go # gosub
+  - github.com/jberkhahn/blockhead/vendor/github.com/pivotal-cf/brokerapi/*.go # gosub
+  - github.com/jberkhahn/blockhead/vendor/github.com/pivotal-cf/brokerapi/auth/*.go # gosub
