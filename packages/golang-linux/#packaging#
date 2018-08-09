@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e -x -u
+
+wget https://dl.google.com/go/go1.10.3.src.tar.gz
+tar xzf go1.10.3.src.tar.gz
+
+cp -R go/* ${BOSH_INSTALL_TARGET}
+
+
+mkdir ${BOSH_INSTALL_TARGET}/bosh
+
+echo $SHELL
+env
+
+cat << EOF > ${BOSH_INSTALL_TARGET}/bosh/compile.env.generic
+platform=`uname | tr '[:upper:]' '[:lower:]'`
+
+if [ -z "${BOSH_PACKAGES_DIR:-}" ]; then
+  export GOROOT=$(readlink -nf /var/vcap/packages/golang-1.10-${platform})
+else
+  export GOROOT=${BOSH_PACKAGES_DIR}/golang-1.10-${platform}
+fi 
+
+export GOPATH=$PWD
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+EOF
+
+cat << EOF > ${BOSH_INSTALL_TARGET}/bosh/runtime.env
+export GOROOT=$(readlink -nf /var/vcap/packages/golang-1.10-linux)
+export GOPATH="${PWD}"
+export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
+EOF

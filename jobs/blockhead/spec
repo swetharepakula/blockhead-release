@@ -1,0 +1,16 @@
+---
+name: blockhead
+
+description: "Totally Awesome -Morgan H. Bauer"
+
+templates:
+  blockhead-config.json.erb: config/blockhead-config.json
+
+packages:
+  - blockhead
+
+properties:
+  username:
+    description: "Username for Blockhead broker"
+  password:
+    description: "Password for Blockhead broker"

@@ -1,0 +1,47 @@
+---
+name: blockhead
+
+addons:
+- name: bpm
+  jobs:
+  - name: bpm
+    release: bpm
+
+instance_groups:
+- name: blockhead-broker
+  instances: 1
+  azs: [z1]
+  jobs:
+  - name: blockhead
+    release: blockhead
+    properties:
+      username: "admin"
+      password: "password"
+  vm_type: small
+  stemcell: default
+  networks:
+  - name: default
+
+releases:
+- name: blockhead
+  url: file:///Users/repakula/workspace/blockhead-release
+  version: create
+- name: bpm
+  sha1: 6d99c62b0993e4f8ff747faa62f91b4288cc27bf
+  stemcell:
+    os: ubuntu-trusty
+    version: "3541.12"
+  url: https://s3.amazonaws.com/cf-containers-broker-boshrelease/compiled-releases/bpm/bpm-0.5.0-ubuntu-trusty-3541.12-20180427-023829-890304456-20180427023837.tgz
+  version: 0.9.0
+
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000

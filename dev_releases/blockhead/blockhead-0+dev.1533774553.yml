@@ -1,0 +1,21 @@
+name: blockhead
+version: 0+dev.1533774553
+commit_hash: aaf93f7
+uncommitted_changes: true
+jobs:
+- name: blockhead
+  version: 8d511bfaeb2f25cc08600a13f5ce972c8c95d32c
+  fingerprint: 8d511bfaeb2f25cc08600a13f5ce972c8c95d32c
+  sha1: fe6f87453559318114da7fa8763f176f80529f00
+packages:
+- name: blockhead
+  version: 1ee852924fbb632bc4324d056f3166815eb6d54a
+  fingerprint: 1ee852924fbb632bc4324d056f3166815eb6d54a
+  sha1: b90cd0df27a5df5ec2b0ca14ca30de13d528ee53
+  dependencies:
+  - golang-linux
+- name: golang-linux
+  version: 61c9e2624b7ba6036ed27bbcfbc3d3510936a418
+  fingerprint: 61c9e2624b7ba6036ed27bbcfbc3d3510936a418
+  sha1: 7f31af4478070042fd592bf0f24324924537a54b
+  dependencies: []
